@@ -58,11 +58,9 @@
         <div class="header_bottom">
             <div class="menu">
                 <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="delivery.html">Delivery</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="active"><a href="/">Anasayfa</a></li>
+                    <li><a href="about.html">Hakkımızda</a></li>
+                    <li><a href="delivery.html">İletişim</a></li>
                     <div class="clear"></div>
                 </ul>
             </div>

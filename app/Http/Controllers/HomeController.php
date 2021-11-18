@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,9 +15,35 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function categoryList()
     {
-        return view('home.index');
+        return Category::where('parent_id','=',0)->with('children')->get();
+    }
+
+    public function categoryproducts($id,$slug){
+        $datalist=Product::where('category_id',$id)->get();
+        $data=Category::find($id);
+
+        return view('home.category_products',['data'=>$data,'datalist'=>$datalist]);
+
+    }
+
+    public static function getsetting()
+    {
+        return Setting::first();
+    }
+
+    public function index(){
+        $setting=Setting::first();
+        $slider=Product::select('id','title','image','slug','price','category_id')->where('status','True')->get();
+
+        $data=[
+            'setting'=>$setting,
+            'slider'=>$slider,
+            'page'=>'home'
+
+        ];
+        return view('home.index',$data);
     }
 
     public function login(){
